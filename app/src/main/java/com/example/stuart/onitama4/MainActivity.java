@@ -1,26 +1,18 @@
 package com.example.stuart.onitama4;
 
 import android.graphics.Color;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import custom.Board;
 import custom.Piece;
 import custom.Space;
 
-import static android.R.attr.id;
-import static android.R.attr.layout;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public Space[][] spaces = new Space[5][5];
+    public Space prevSpace;
 
     final int[] SPACE_IDS = {
             R.id.button00,
@@ -59,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         board.setSpaces(spaces);
     }
 
-
-
     public void inizilzeSpaces(){
         int add=0;
         for(int x=0;x<5;x++) {
@@ -76,33 +66,33 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                 }
-                space.setOnClickListener(new Space.OnClickListener() {
-                    Space prevSpace;
-                    public void onClick(View v) {
-                        Space s = (Space) v;
-                        if(s.isActivated()){
-                            s.setActivated(false);
-                            prevSpace=null;
-                        }
-                        else{
-                            if(prevSpace==null){
-                                s.setActivated(true);
-                                prevSpace = s;
-                                s.setBackgroundColor(Color.YELLOW);
-                            }
-                            else{
-                                if(prevSpace.hasPiece()){
-                                    s.setPiece(prevSpace.piece);
-                                    prevSpace.removePiece();
-                                }
-                            }
-
-                        }
-
-                    }
-                });
+                space.setOnClickListener(this);
             }
             add+=5;
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        Space s = (Space) v;
+        if(s.isActivated()){
+            s.setActivated(false);
+            this.prevSpace =null;
+            s.setBackgroundColor(Color.GRAY);
+        }
+        else{
+            if(this.prevSpace ==null){
+                s.setActivated(true);
+                prevSpace = s;
+                s.setBackgroundColor(Color.YELLOW);
+            }
+            else{
+                if(prevSpace.hasPiece()){
+                    s.setPiece(prevSpace.piece);
+                    prevSpace.removePiece();
+                }
+            }
+
         }
     }
 }
