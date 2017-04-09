@@ -12,7 +12,6 @@ import custom.Space;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public Space[][] spaces = new Space[5][5];
-    public Space prevSpace;
 
     final int[] SPACE_IDS = {
             R.id.button00,
@@ -41,55 +40,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             R.id.button43,
             R.id.button44
     };
+    Board board;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.board);
-        Board board = (Board) findViewById(R.id.theBoard);
-        inizilzeSpaces();
-        board.setSpaces(spaces);
+        board = (Board) findViewById(R.id.theBoard);
+        getSpaces();
+        board.setSpaces(spaces, this);
     }
 
-    public void inizilzeSpaces(){
+    public void getSpaces(){
         int add=0;
         for(int x=0;x<5;x++) {
             for (int y = 0; y < 5; y++) {
                 Space space = (Space) findViewById(SPACE_IDS[y + add]);
                 spaces[x][y] = space;
-                if(x==0||x==4){
-                    if(y==2){
-                        space.setPiece(new Piece("M", x==0 ? Color.BLUE:Color.RED));
-                    }
-                    else{
-                        space.setPiece(new Piece("m", x==0 ? Color.BLUE:Color.RED));
-                    }
-
-                }
-                space.setOnClickListener(this);
             }
             add+=5;
         }
     }
 
+
     @Override
     public void onClick(View v) {
         Space s = (Space) v;
         if(s.isActivated()){
-            s.setActivated(false);
-            this.prevSpace =null;
-            s.setBackgroundColor(Color.GRAY);
+            board.highlightSpace(s, false);
         }
         else{
-            if(this.prevSpace ==null){
-                s.setActivated(true);
-                prevSpace = s;
-                s.setBackgroundColor(Color.YELLOW);
+            if(!board.hasPrevSpace()){
+                board.highlightSpace(s, true);
             }
             else{
-                if(prevSpace.hasPiece()){
-                    s.setPiece(prevSpace.piece);
-                    prevSpace.removePiece();
+                if(board.prevSpace.hasPiece()&&(!s.hasPiece()||(s.piece.color!=board.prevSpace.piece.color))){
+                    board.move(s);
                 }
             }
 
