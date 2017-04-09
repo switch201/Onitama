@@ -70,13 +70,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             board.highlightSpace(s, false);
         }
         else{
-            if(!board.hasPrevSpace()){
+            if(!board.hasPrevSpace()&&s.hasPiece()){
                 board.highlightSpace(s, true);
             }
             else{
-                if(board.prevSpace.hasPiece()&&(!s.hasPiece()||(s.piece.color!=board.prevSpace.piece.color))){
-                    board.move(s);
-                }
+                board.moveOrCapture(s);
             }
 
         }

@@ -47,16 +47,29 @@ public class Board extends LinearLayout {
         return prevSpace!=null;
     }
 
-    public boolean move(Space to){
-        if(prevSpace.hasPiece()&&!to.hasPiece()){
-            to.setPiece(prevSpace.piece);
-            prevSpace.removePiece();
-            prevSpace.setBackgroundColor(Color.GRAY);
-            prevSpace.setActivated(false);
-            prevSpace=null;
-            return true;
+    public boolean moveOrCapture(Space s){
+        if(s.hasPiece()){
+            return capture(s);
+        }
+        else{
+            return move(s);
+        }
+    }
+
+    public boolean capture(Space to){
+        if(prevSpace.piece.color!=to.piece.color){
+            return move(to);
         }
         return false;
+    }
+
+    public boolean move(Space to){
+        to.setPiece(prevSpace.piece);
+        prevSpace.removePiece();
+        prevSpace.setBackgroundColor(Color.GRAY);
+        prevSpace.setActivated(false);
+        prevSpace=null;
+        return true;
     }
 
     public void setSpaces(Space[][] spaces, MainActivity m){
