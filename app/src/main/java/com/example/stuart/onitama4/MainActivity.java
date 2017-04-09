@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.board);
+        setContentView(R.layout.game_area);
         board = (Board) findViewById(R.id.theBoard);
         getSpaces();
         board.setSpaces(spaces, this);
@@ -74,7 +74,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 board.highlightSpace(s, true);
             }
             else{
-                board.moveOrCapture(s);
+                if((board.prevSpace!=null)&&board.moveOrCapture(s)){
+                    System.out.println("Happy Chime");
+                }
+                else{
+                    System.out.println("Sad Chime");
+                }
+
             }
 
         }
