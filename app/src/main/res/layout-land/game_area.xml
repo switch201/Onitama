@@ -203,7 +203,54 @@
     <custom.CardArea
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight=".5">
+        android:layout_weight=".5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <custom.Card
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"/>
+
+            <custom.Card
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <custom.Card
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <custom.Card
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"/>
+
+            <custom.Card
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"
+                />
+        </LinearLayout>
     </custom.CardArea>
 
 </custom.GameArea>
