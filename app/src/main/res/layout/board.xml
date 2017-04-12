@@ -16,34 +16,37 @@
             android:id="@+id/button00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".2">
-
-        </custom.Space>
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
 
         <custom.Space
             android:id="@+id/button01"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".2" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".2" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button03"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".2" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button04"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight=".2" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
     </custom.Row>
 
     <custom.Row
@@ -56,31 +59,36 @@
             android:id="@+id/button10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
     </custom.Row>
 
     <custom.Row
@@ -93,31 +101,36 @@
             android:id="@+id/button20"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
     </custom.Row>
 
     <custom.Row
@@ -130,31 +143,36 @@
             android:id="@+id/button30"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button31"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="0" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button32"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button33"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button34"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_weight=".2"
+            android:gravity="center"/>
     </custom.Row>
 
     <custom.Row
@@ -166,32 +184,37 @@
         <custom.Space
             android:id="@+id/button40"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button41"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button42"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button43"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:gravity="center"/>
 
         <custom.Space
             android:id="@+id/button44"
             android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:layout_weight=".2"
+            android:gravity="center"/>
     </custom.Row>
 
 </custom.Board>

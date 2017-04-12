@@ -17,16 +17,22 @@ public class Space extends android.support.v7.widget.AppCompatTextView {
     public Space(Context context) {
         super(context);
         this.setBackgroundColor(Color.GRAY);
+        this.setTextColor(Color.GRAY);
+        this.setText("M");
     }
 
     public Space(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.setBackgroundColor(Color.GRAY);
+        this.setTextColor(Color.GRAY);
+        this.setText("M");
     }
 
     public Space(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         this.setBackgroundColor(Color.GRAY);
+        this.setTextColor(Color.GRAY);
+        this.setText("M");
     }
 
     // This is used to make square buttons.
@@ -44,8 +50,8 @@ public class Space extends android.support.v7.widget.AppCompatTextView {
 
     public void removePiece(){
         this.piece = null;
-        this.setText("");
-        this.setTextColor(Color.BLACK);
+        this.setText("M");
+        this.setTextColor(Color.GRAY);
     }
 
 

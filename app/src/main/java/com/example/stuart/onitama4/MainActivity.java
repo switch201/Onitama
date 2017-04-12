@@ -1,12 +1,10 @@
 package com.example.stuart.onitama4;
-
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import custom.Board;
-import custom.Piece;
 import custom.Space;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -75,10 +73,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             else{
                 if((board.prevSpace!=null)&&board.moveOrCapture(s)){
-                    System.out.println("Happy Chime");
+                    Log.d("noises", "Happy Chime");
                 }
                 else{
-                    System.out.println("Sad Chime");
+                    Log.d("noises", "Sad Chime");
                 }
 
             }
