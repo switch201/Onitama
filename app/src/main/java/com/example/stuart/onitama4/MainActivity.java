@@ -6,38 +6,12 @@ import android.view.View;
 
 import custom.Board;
 import custom.Space;
+import custom.Util;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public Space[][] spaces = new Space[5][5];
 
-    final int[] SPACE_IDS = {
-            R.id.button00,
-            R.id.button01,
-            R.id.button02,
-            R.id.button03,
-            R.id.button04,
-            R.id.button10,
-            R.id.button11,
-            R.id.button12,
-            R.id.button13,
-            R.id.button14,
-            R.id.button20,
-            R.id.button21,
-            R.id.button22,
-            R.id.button23,
-            R.id.button24,
-            R.id.button30,
-            R.id.button31,
-            R.id.button32,
-            R.id.button33,
-            R.id.button34,
-            R.id.button40,
-            R.id.button41,
-            R.id.button42,
-            R.id.button43,
-            R.id.button44
-    };
     Board board;
 
     @Override
@@ -53,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int add=0;
         for(int x=0;x<5;x++) {
             for (int y = 0; y < 5; y++) {
-                Space space = (Space) findViewById(SPACE_IDS[y + add]);
+                Space space = (Space) findViewById(Util.SPACE_IDS[y + add]);
                 spaces[x][y] = space;
             }
             add+=5;

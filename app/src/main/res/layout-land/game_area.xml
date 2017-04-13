@@ -213,11 +213,13 @@
             android:orientation="horizontal">
 
             <custom.Card
+                android:id="@+id/top1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight=".25"/>
 
             <custom.Card
+                android:id="@+id/top2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight=".25"/>
@@ -230,6 +232,7 @@
             android:orientation="horizontal">
 
             <custom.Card
+                android:id="@+id/middle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
@@ -238,18 +241,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="horizontal">,
 
             <custom.Card
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".25"/>
+                android:layout_weight=".25" />
 
             <custom.Card
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".25"
-                />
+                android:layout_weight=".25" />
         </LinearLayout>
     </custom.CardArea>
 
