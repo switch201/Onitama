@@ -44,9 +44,17 @@ public class Util {
             R.id.button44
     };
 
+    public static final int[] CARD_IDS = {
+            R.id.top1,
+            R.id.top2,
+            R.id.middle,
+            R.id.bottom1,
+            R.id.bottom2
+    };
 
 
-    private static final Map<String,List<Point>> CARDS;
+
+   public static final Map<String,List<Point>> CARDS;
     static
     {
         CARDS = new HashMap<>();

@@ -201,6 +201,7 @@
     </custom.Board>
 
     <custom.CardArea
+        android:id="@+id/cardArea"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight=".5"
@@ -244,11 +245,13 @@
             android:orientation="horizontal">,
 
             <custom.Card
+                android:id="@+id/bottom1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight=".25" />
 
             <custom.Card
+                android:id="@+id/bottom2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight=".25" />

@@ -4,8 +4,11 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+
+import java.util.ArrayList;
 
 /**
  * Created by Stuart on 4/9/2017.
@@ -27,5 +30,9 @@ public class CardArea extends LinearLayout {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public CardArea(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+    public void setCards(ArrayList cards, AppCompatActivity m){
+
     }
 }

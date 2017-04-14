@@ -6,14 +6,16 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Stuart on 4/11/2017.
  */
 
-public class Card extends android.support.v7.widget.AppCompatImageView {
+public class Card extends android.support.v7.widget.AppCompatTextView {
 
-    public ArrayList moveableSpots;
+    public String name;
+    public List moveableSpots;
 
     public Card(Context context) {
         super(context);
@@ -27,7 +29,11 @@ public class Card extends android.support.v7.widget.AppCompatImageView {
         super(context, attrs, defStyleAttr);
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-
-
+    public void setMoveableSpots(List moveableSpots) {
+        this.moveableSpots = moveableSpots;
+    }
 }
