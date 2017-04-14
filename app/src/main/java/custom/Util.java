@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +58,7 @@ public class Util {
    public static final Map<String,List<Point>> CARDS;
     static
     {
-        CARDS = new HashMap<>();
+        CARDS = new LinkedHashMap<>();
         CARDS.put("Tiger", Arrays.asList(new Point(0,-1),new Point(0,2)));
         CARDS.put("Dragon", Arrays.asList(new Point(-2,1),new Point(-1,-1), new Point(1,-1), new Point(2,1)));
         CARDS.put("Frog", Arrays.asList(new Point(-2,0),new Point(-1,1), new Point(1,-1)));

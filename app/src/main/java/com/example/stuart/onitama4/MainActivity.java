@@ -35,8 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         board = (Board) findViewById(R.id.theBoard);
         cardArea = (CardArea) findViewById(R.id.cardArea);
         getSpaces();
+        getCards();
         board.setSpaces(spaces, this);
-//        cardArea.setCards(cards, this);
+        cardArea.setCards(cards);
     }
 
     public void getSpaces(){
@@ -50,36 +51,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void getCards(){
-        final Set<Integer> intSet = new HashSet<>();
-        while (intSet.size() < 6) {
-            intSet.add(new Random().nextInt(Util.CARDS.entrySet().size()));
-        }
         for(int x=0;x<Util.CARD_IDS.length;x++){
-            cards.add((Card) findViewById(Util.CARD_IDS[x]));
+            cards.add(findViewById(Util.CARD_IDS[x]));
         }
     }
 
 
     @Override
     public void onClick(View v) {
-        Space s = (Space) v;
-        if(s.isActivated()){
-            board.highlightSpace(s, false);
-        }
-        else{
-            if(!board.hasPrevSpace()&&s.hasPiece()){
-                board.highlightSpace(s, true);
+        if(v instanceof Space){
+            Space s = (Space) v;
+            if(s.isActivated()){
+                board.highlightSpace(s, false);
             }
             else{
-                if((board.prevSpace!=null)&&board.moveOrCapture(s)){
-                    Log.d("noises", "Happy Chime");
+                if(!board.hasPrevSpace()&&s.hasPiece()){
+                    board.highlightSpace(s, true);
                 }
                 else{
-                    Log.d("noises", "Sad Chime");
+                    if((board.prevSpace!=null)&&board.moveOrCapture(s)){
+                        Log.d("noises", "Happy Chime");
+                    }
+                    else{
+                        Log.d("noises", "Sad Chime");
+                    }
+
                 }
 
             }
-
+        }
+        else if(v instanceof Card){
+            Card c = (Card) v;
         }
     }
 }

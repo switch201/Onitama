@@ -9,12 +9,20 @@ import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
 /**
  * Created by Stuart on 4/9/2017.
  */
 
 public class CardArea extends LinearLayout {
+    ArrayList cards;
+
     public CardArea(Context context) {
         super(context);
     }
@@ -32,7 +40,21 @@ public class CardArea extends LinearLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public void setCards(ArrayList cards, AppCompatActivity m){
+    public void setCards(ArrayList cards){
+        this.cards=cards;
+        inizilizeCards();
+    }
 
+    public void inizilizeCards(){
+        Iterator it = Util.CARDS.entrySet().iterator();
+        Iterator<Card> it2 = cards.iterator();
+        while (it.hasNext()&&it2.hasNext()){
+            Map.Entry pair = (Map.Entry) it.next();
+            Card currentCard = it2.next();
+            currentCard.setName((String)pair.getKey());
+            currentCard.setMoveableSpots((List)pair.getValue());
+            it2.remove();
+            it.remove();
+        }
     }
 }
