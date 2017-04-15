@@ -55,7 +55,7 @@ public class Util {
 
 
 
-   public static final Map<String,List<Point>> CARDS;
+   public static final LinkedHashMap<String,List<Point>> CARDS;
     static
     {
         CARDS = new LinkedHashMap<>();

@@ -1,29 +1,21 @@
 package com.example.stuart.onitama4;
-import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-import java.util.Set;
 
 import custom.Board;
 import custom.Card;
 import custom.CardArea;
-import custom.GameArea;
 import custom.Space;
 import custom.Util;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public Space[][] spaces = new Space[5][5];
-    public ArrayList cards = new ArrayList();
+    public ArrayList cardSpots = new ArrayList();
 
     Board board;
     CardArea cardArea;
@@ -37,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSpaces();
         getCards();
         board.setSpaces(spaces, this);
-        cardArea.setCards(cards);
+        cardArea.setCardSpots(cardSpots);
     }
 
     public void getSpaces(){
@@ -52,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void getCards(){
         for(int x=0;x<Util.CARD_IDS.length;x++){
-            cards.add(findViewById(Util.CARD_IDS[x]));
+            cardSpots.add(findViewById(Util.CARD_IDS[x]));
         }
     }
 
