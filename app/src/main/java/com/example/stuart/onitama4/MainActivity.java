@@ -13,7 +13,6 @@ import custom.Board;
 import custom.Card;
 import custom.CardArea;
 import custom.GameState;
-import custom.Player;
 import custom.Space;
 import custom.Util;
 
@@ -21,9 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public Space[][] spaces = new Space[5][5];
     public ArrayList cardSpots = new ArrayList();
-    public Player player1;
-    public Player player2;
-    public Player activePlayer;
 
     Board board;
     CardArea cardArea;
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean moveOrCapture(Space s) {
-        if (cardArea.hasSelectedCard()) {
+        if (cardArea.hasSelectedCard()&&isLeagleMove()) {
             if (s.hasPiece()) {
                 return board.capture(s);
             } else {
@@ -105,17 +101,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-//        showMoves();
+        showMoves();
     }
 
-
-
+    public boolean isLeagleMove(){
+        return true;
+    }
 
     public void showMoves(){
+
         if(cardArea.hasSelectedCard()&&board.hasPrevSpace()){
-            Iterator<Point> it = cardArea.selectedCard.moveableSpots.iterator();
+            Iterator it = cardArea.selectedCard.moveableSpots.iterator();
             while (it.hasNext()){
-                it.remove();
+                Point p = (Point) it.next();
+                try{
+                    board.spaces[p.x+board.prevSpace.x][p.y+board.prevSpace.y].setBackgroundColor(Color.RED);
+                    gs.possibleMoves.add(board.spaces[p.x+board.prevSpace.x][p.y+board.prevSpace.y]);
+                }
+                catch (Throwable t){}
+
+            }
+
+        }
+        else{
+            if(!gs.possibleMoves.isEmpty()){
+                Iterator<Space> it = gs.possibleMoves.iterator();
+                while (it.hasNext()){
+                    it.next().setBackgroundColor(Color.GRAY);
+                }
+                gs.possibleMoves.clear();
             }
         }
     }

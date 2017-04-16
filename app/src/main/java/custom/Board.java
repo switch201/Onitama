@@ -72,6 +72,8 @@ public class Board extends LinearLayout {
         for(int x=0;x<5;x++) {
             for (int y = 0; y < 5; y++) {
                 Space space = spaces[x][y];
+                spaces[x][y].x=x;
+                spaces[x][y].y=y;
                 if(x==0||x==4){
                     if(y==2){
                         space.setPiece(new Piece("M", x==0 ? Color.BLUE:Color.RED));
@@ -84,6 +86,10 @@ public class Board extends LinearLayout {
                 space.setOnClickListener(m);
             }
         }
+    }
+
+    public Space getSpace(int x,int y){
+        return spaces[x][y];
     }
 
 
