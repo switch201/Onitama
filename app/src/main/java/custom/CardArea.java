@@ -5,8 +5,11 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+
+import com.example.stuart.onitama4.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,12 +42,12 @@ public class CardArea extends LinearLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public void setCardSpots(ArrayList cardSpots){
+    public void setCardSpots(ArrayList cardSpots, MainActivity m){
         this.cardSpots = cardSpots;
-        inizilizeCards();
+        inizilizeCards(m);
     }
 
-    public void inizilizeCards(){
+    public void inizilizeCards(MainActivity m){
         ArrayList<String> cardNames = new ArrayList(Util.CARDS.keySet());
         for(int x = 0;x<cardSpots.size();x++){
             int draw = new Random().nextInt(cardNames.size());
@@ -52,14 +55,15 @@ public class CardArea extends LinearLayout {
             List moveableSpaces = Util.CARDS.get(cardName);
             cardSpots.get(x).setMoveableSpots(moveableSpaces);
             cardSpots.get(x).setName(cardName);
+            cardSpots.get(x).setOnClickListener(m);
             cardNames.remove(draw);
         }
     }
 
     public void highlightCard(Card c, boolean highlight){
         c.setActivated(highlight);
-        selectedCard = highlight?c:null;
         c.setBackgroundColor(highlight? Color.YELLOW:Color.GRAY);
+        selectedCard = highlight?c:null;
     }
 
     public boolean hasSelectedCard(){

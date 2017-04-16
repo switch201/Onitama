@@ -20,19 +20,16 @@ public class Card extends android.support.v7.widget.AppCompatTextView {
 
     public Card(Context context) {
         super(context);
-        this.setBackgroundColor(Color.MAGENTA);
         this.setTextColor(Color.GREEN);
     }
 
     public Card(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setBackgroundColor(Color.MAGENTA);
         this.setTextColor(Color.GREEN);
     }
 
     public Card(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.setBackgroundColor(Color.MAGENTA);
         this.setTextColor(Color.GREEN);
     }
 

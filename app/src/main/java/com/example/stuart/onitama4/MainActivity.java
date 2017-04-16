@@ -1,4 +1,5 @@
 package com.example.stuart.onitama4;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import java.util.Iterator;
 import custom.Board;
 import custom.Card;
 import custom.CardArea;
+import custom.GameState;
+import custom.Player;
 import custom.Space;
 import custom.Util;
 
@@ -18,9 +21,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public Space[][] spaces = new Space[5][5];
     public ArrayList cardSpots = new ArrayList();
+    public Player player1;
+    public Player player2;
+    public Player activePlayer;
 
     Board board;
     CardArea cardArea;
+    GameState gs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +35,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.game_area);
         board = (Board) findViewById(R.id.theBoard);
         cardArea = (CardArea) findViewById(R.id.cardArea);
+        gs = new GameState();
         getSpaces();
         getCards();
         board.setSpaces(spaces, this);
-        cardArea.setCardSpots(cardSpots);
+        cardArea.setCardSpots(cardSpots, this);
     }
 
     public void getSpaces(){
@@ -74,8 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     board.highlightSpace(s, true);
                 }
                 else{
-                    if((board.prevSpace!=null)&&moveOrCapture(s)){
+                    if((board.hasPrevSpace())&&gs.isPlayersTurn(board)&&moveOrCapture(s)){
                         Log.d("noises", "Happy Chime");
+                        gs.switchPlayers();
                     }
                     else{
                         Log.d("noises", "Sad Chime");
@@ -91,11 +100,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 cardArea.highlightCard(c, false);
             }
             else{
-                cardArea.highlightCard(c, true);
+                if(!cardArea.hasSelectedCard()){
+                    cardArea.highlightCard(c, true);
+                }
             }
         }
-        showMoves();
+//        showMoves();
     }
+
+
+
 
     public void showMoves(){
         if(cardArea.hasSelectedCard()&&board.hasPrevSpace()){
