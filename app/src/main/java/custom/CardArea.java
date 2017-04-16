@@ -1,6 +1,7 @@
 package custom;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -19,6 +20,7 @@ import java.util.Set;
 
 public class CardArea extends LinearLayout {
     ArrayList<Card> cardSpots;
+    public Card selectedCard;
 
     public CardArea(Context context) {
         super(context);
@@ -52,5 +54,15 @@ public class CardArea extends LinearLayout {
             cardSpots.get(x).setName(cardName);
             cardNames.remove(draw);
         }
+    }
+
+    public void highlightCard(Card c, boolean highlight){
+        c.setActivated(highlight);
+        selectedCard = highlight?c:null;
+        c.setBackgroundColor(highlight? Color.YELLOW:Color.GRAY);
+    }
+
+    public boolean hasSelectedCard(){
+        return selectedCard!=null;
     }
 }

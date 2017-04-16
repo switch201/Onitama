@@ -47,15 +47,6 @@ public class Board extends LinearLayout {
         return prevSpace!=null;
     }
 
-    public boolean moveOrCapture(Space s){
-        if(s.hasPiece()){
-            return capture(s);
-        }
-        else{
-            return move(s);
-        }
-    }
-
     public boolean capture(Space to){
         if(prevSpace.piece.color!=to.piece.color){
             return move(to);

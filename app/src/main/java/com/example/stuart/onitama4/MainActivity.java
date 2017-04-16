@@ -1,10 +1,12 @@
 package com.example.stuart.onitama4;
+import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import custom.Board;
 import custom.Card;
@@ -42,6 +44,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public boolean moveOrCapture(Space s) {
+        if (cardArea.hasSelectedCard()) {
+            if (s.hasPiece()) {
+                return board.capture(s);
+            } else {
+                return board.move(s);
+            }
+        }
+        return false;
+    }
+
     public void getCards(){
         for(int x=0;x<Util.CARD_IDS.length;x++){
             cardSpots.add(findViewById(Util.CARD_IDS[x]));
@@ -61,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     board.highlightSpace(s, true);
                 }
                 else{
-                    if((board.prevSpace!=null)&&board.moveOrCapture(s)){
+                    if((board.prevSpace!=null)&&moveOrCapture(s)){
                         Log.d("noises", "Happy Chime");
                     }
                     else{
@@ -74,6 +87,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if(v instanceof Card){
             Card c = (Card) v;
+            if (c.isActivated()){
+                cardArea.highlightCard(c, false);
+            }
+            else{
+                cardArea.highlightCard(c, true);
+            }
+        }
+        showMoves();
+    }
+
+    public void showMoves(){
+        if(cardArea.hasSelectedCard()&&board.hasPrevSpace()){
+            Iterator<Point> it = cardArea.selectedCard.moveableSpots.iterator();
+            while (it.hasNext()){
+                it.remove();
+            }
         }
     }
 }
