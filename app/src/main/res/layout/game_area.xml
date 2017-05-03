@@ -1,6 +1,262 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<custom.GameArea xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gameArea"
+    android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</LinearLayout>
+    <custom.Board
+        android:id="@+id/theBoard"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight=".5"
+        android:layout_height="match_parent">
+
+        <custom.Row
+            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <custom.Space
+                android:id="@+id/button00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2">
+
+            </custom.Space>
+
+
+            <custom.Space
+                android:id="@+id/button01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+
+            <custom.Space
+                android:id="@+id/button02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+
+            <custom.Space
+                android:id="@+id/button03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+
+            <custom.Space
+                android:id="@+id/button04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".2" />
+        </custom.Row>
+
+        <custom.Row
+            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <custom.Space
+                android:id="@+id/button10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </custom.Row>
+
+        <custom.Row
+            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <custom.Space
+                android:id="@+id/button20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </custom.Row>
+
+        <custom.Row
+            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <custom.Space
+                android:id="@+id/button30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button33"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button34"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </custom.Row>
+
+        <custom.Row
+            android:layout_width="match_parent"
+            android:layout_weight=".2"
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+
+            <custom.Space
+                android:id="@+id/button40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <custom.Space
+                android:id="@+id/button44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </custom.Row>
+
+    </custom.Board>
+
+    <custom.CardArea
+        android:id="@+id/cardArea"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <custom.Card
+                android:id="@+id/top1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"/>
+
+            <custom.Card
+                android:id="@+id/top2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <custom.Card
+                android:id="@+id/middle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal">,
+
+            <custom.Card
+                android:id="@+id/bottom1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25" />
+
+            <custom.Card
+                android:id="@+id/bottom2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".25" />
+        </LinearLayout>
+    </custom.CardArea>
+
+</custom.GameArea>
