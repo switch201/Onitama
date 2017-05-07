@@ -41,6 +41,11 @@ public class Card extends android.support.v7.widget.AppCompatTextView {
         this.setBackgroundColor(Color.GRAY);
     }
 
+    public void setCard(Card card){
+        setName(card.name);
+        setMoveableSpots(card.moveableSpots);
+    }
+
     public boolean hasController(){
         return controller!=null;
     }

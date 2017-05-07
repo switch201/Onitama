@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public Space[][] spaces = new Space[5][5];
     public ArrayList cardSpots = new ArrayList();
 
+
     Board board;
     CardArea cardArea;
     GameState gs;
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean moveOrCapture(Space s) {
-        if (cardArea.hasSelectedCard()&&isLeagleMove()) {
+        if (cardArea.hasSelectedCard()&& isLegalMove(s)) {
+            cardArea.playCard();
             if (s.hasPiece()) {
                 return board.capture(s);
             } else {
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void getCards(){
         for(int x=0;x<Util.CARD_IDS.length;x++){
+
             cardSpots.add(findViewById(Util.CARD_IDS[x]));
         }
     }
@@ -104,7 +107,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showMoves();
     }
 
-    public boolean isLeagleMove(){
+    public boolean isLegalMove(Space s){
+        if(s.hasPiece()){
+            if(s.piece.color==board.prevSpace.piece.color){
+                return false;
+            }
+            return true;
+        }
+        if(cardArea.isPlayersCard(gs)){
+            return false;
+        }
         return true;
     }
 
