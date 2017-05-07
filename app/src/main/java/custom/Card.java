@@ -17,6 +17,7 @@ public class Card extends android.support.v7.widget.AppCompatTextView {
 
     public String name;
     public List moveableSpots;
+    public Player controller;
 
     public Card(Context context) {
         super(context);
@@ -38,6 +39,10 @@ public class Card extends android.support.v7.widget.AppCompatTextView {
         this.setText(name);
         this.setTextColor(Color.GREEN);
         this.setBackgroundColor(Color.GRAY);
+    }
+
+    public boolean hasController(){
+        return controller!=null;
     }
 
     public void setMoveableSpots(List moveableSpots) {

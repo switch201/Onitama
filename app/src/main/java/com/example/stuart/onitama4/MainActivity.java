@@ -114,9 +114,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             while (it.hasNext()){
                 Point p = (Point) it.next();
                 try{
-                    //this current setup shows moves relative to player 2 probably use minus to show relative to player 1
-                    board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
-                    gs.possibleMoves.add(board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y]);
+                    if(gs.activePlayer == gs.player2){
+                        //this current setup shows moves relative to player 2 probably use minus to show relative to player 1
+                        board.spaces[p.x+board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
+                        gs.possibleMoves.add(board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y]);
+                    }
+                    else {
+                        //this current setup shows moves relative to player 2 probably use minus to show relative to player 1
+                        board.spaces[p.y-board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
+                        gs.possibleMoves.add(board.spaces[p.y-board.prevSpace.x][p.x+board.prevSpace.y]);
+                    }
                 }
                 catch (Throwable t){}
 

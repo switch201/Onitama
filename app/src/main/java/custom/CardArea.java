@@ -22,7 +22,9 @@ import java.util.Set;
  */
 
 public class CardArea extends LinearLayout {
-    ArrayList<Card> cardSpots;
+    ArrayList<Card> player1Spots;
+    ArrayList<Card> player2Spots;
+    Card middleSpot;
     public Card selectedCard;
 
     public CardArea(Context context) {
@@ -43,22 +45,42 @@ public class CardArea extends LinearLayout {
     }
 
     public void setCardSpots(ArrayList cardSpots, MainActivity m){
-        this.cardSpots = cardSpots;
-        inizilizeCards(m);
+        inizilizeCards(m,cardSpots);
     }
 
-    public void inizilizeCards(MainActivity m){
+    public void inizilizeCards(MainActivity m,ArrayList<Card> cardSpots){
+        player1Spots = new ArrayList<Card>();
+        player2Spots = new ArrayList<Card>();
         ArrayList<String> cardNames = new ArrayList(Util.CARDS.keySet());
         for(int x = 0;x<cardSpots.size();x++){
             int draw = new Random().nextInt(cardNames.size());
             String cardName = cardNames.get(draw);
             List moveableSpaces = Util.CARDS.get(cardName);
-            cardSpots.get(x).setMoveableSpots(moveableSpaces);
-            cardSpots.get(x).setName(cardName);
-            cardSpots.get(x).setOnClickListener(m);
+            
+            if(x<2){
+                player2Spots.add(cardSpots.get(x));
+                player2Spots.get(x).setMoveableSpots(moveableSpaces);
+                player2Spots.get(x).setName(cardName);
+                player2Spots.get(x).setOnClickListener(m);
+            }
+            else if(x==2){
+                middleSpot = cardSpots.get(x);
+                middleSpot.setMoveableSpots(moveableSpaces);
+                middleSpot.setName(cardName);
+                middleSpot.setOnClickListener(m);
+            }
+            else {
+                int y = x - 3;
+                player1Spots.add(cardSpots.get(x));
+                player1Spots.get(y).setMoveableSpots(moveableSpaces);
+                player1Spots.get(y).setName(cardName);
+                player1Spots.get(y).setOnClickListener(m);
+            }
             cardNames.remove(draw);
         }
     }
+
+
 
     public void highlightCard(Card c, boolean highlight){
         c.setActivated(highlight);

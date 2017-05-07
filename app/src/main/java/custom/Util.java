@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -76,4 +77,21 @@ public class Util {
         CARDS.put("Eel", Arrays.asList(new Point(-1,1),new Point(-1,-1), new Point(1,0)));
         CARDS.put("Cobra",Arrays.asList(new Point(-1,0),new Point(1,1), new Point(1,-1)));
     }
+
+    public static LinkedHashMap<String,List<Point>> flipedCards(){
+        LinkedHashMap<String,List<Point>> flippedCards = new LinkedHashMap<>();
+        Iterator<String> cards = CARDS.keySet().iterator();
+        while(cards.hasNext()){
+            String cardName = cards.next();
+            Iterator<Point> points = CARDS.get(cardName).iterator();
+            List<Point> flippedPoints = new ArrayList<Point>();
+            while (points.hasNext()){
+                Point normalPoint = points.next();
+                flippedPoints.add(new Point(-normalPoint.x,-normalPoint.y));
+            }
+            flippedCards.put(cardName,flippedPoints);
+        }
+        return flippedCards;
+    }
+
 }
