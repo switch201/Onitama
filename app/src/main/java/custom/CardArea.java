@@ -61,9 +61,11 @@ public class CardArea extends LinearLayout {
     }
 
     public void playCard(){
-        Card middleCard = cardSpots.get(2);
+        String name = cardSpots.get(2).name;
+        List spots = cardSpots.get(2).moveableSpots;
         cardSpots.get(2).setCard(selectedCard);
-        selectedCard.setCard(middleCard);
+        selectedCard.setMoveableSpots(spots);
+        selectedCard.setName(name);
         selectedCard=null;
     }
 
