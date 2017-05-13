@@ -121,12 +121,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void showMoves(){
+        if(!gs.possibleMoves.isEmpty()){
+            for(int x=0;x<board.spaces.length;x++){
+                for(int y=0;y<board.spaces.length;y++){
+                    board.spaces[x][y].setBackgroundColor(Color.GRAY);
+                }
+            }
+            gs.possibleMoves.clear();
+        }
         if(cardArea.hasSelectedCard()&&board.hasPrevSpace()){
             Iterator it = cardArea.selectedCard.moveableSpots.iterator();
             while (it.hasNext()){
                 Point p = (Point) it.next();
                 try{
-                    if(gs.activePlayer == gs.player2){
+                    if(board.prevSpace.piece.color == gs.player2.color){
                         //this current setup shows moves relative to player 2 probably use minus to show relative to player 1
                         board.spaces[p.x+board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
                         gs.possibleMoves.add(board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y]);
@@ -141,15 +149,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             }
 
-        }
-        else{
-            if(!gs.possibleMoves.isEmpty()){
-                Iterator<Space> it = gs.possibleMoves.iterator();
-                while (it.hasNext()){
-                    it.next().setBackgroundColor(Color.GRAY);
-                }
-                gs.possibleMoves.clear();
-            }
         }
     }
 }
