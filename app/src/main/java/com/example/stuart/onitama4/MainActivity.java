@@ -124,7 +124,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(!gs.possibleMoves.isEmpty()){
             for(int x=0;x<board.spaces.length;x++){
                 for(int y=0;y<board.spaces.length;y++){
-                    board.spaces[x][y].setBackgroundColor(Color.GRAY);
+                    if(board.spaces[x][y]!=board.prevSpace){
+                        board.spaces[x][y].setBackgroundColor(Color.GRAY);
+                    }
                 }
             }
             gs.possibleMoves.clear();
