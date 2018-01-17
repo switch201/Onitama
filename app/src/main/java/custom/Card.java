@@ -17,6 +17,7 @@ public class Card extends android.support.v7.widget.AppCompatTextView {
 
     public String name;
     public List moveableSpots;
+    public int color;
 
     public Card(Context context) {
         super(context);
@@ -42,5 +43,9 @@ public class Card extends android.support.v7.widget.AppCompatTextView {
 
     public void setMoveableSpots(List moveableSpots) {
         this.moveableSpots = moveableSpots;
+    }
+
+    public void setColor(int color){
+        this.color = color;
     }
 }

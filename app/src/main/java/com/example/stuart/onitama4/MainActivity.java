@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public boolean moveOrCapture(Space s) {
-        if (cardArea.hasSelectedCard()&&isLeagleMove()) {
+    public boolean moveOrCapture(Space s, Card c) {
+        if (cardArea.hasSelectedCard()&&isLeagleMove(s)) {
             if (s.hasPiece()) {
                 return board.capture(s);
             } else {
@@ -78,9 +78,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     board.highlightSpace(s, true);
                 }
                 else{
-                    if((board.hasPrevSpace())&&gs.isPlayersTurn(board)&&moveOrCapture(s)){
+                    if((board.hasPrevSpace())&&gs.isPlayersTurn(board)&&moveOrCapture(s, cardArea.selectedCard)){
                         Log.d("noises", "Happy Chime");
                         gs.switchPlayers();
+//                        CardArea.rotateCards();
                     }
                     else{
                         Log.d("noises", "Sad Chime");
@@ -104,8 +105,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showMoves();
     }
 
-    public boolean isLeagleMove(){
-        return true;
+    public boolean isLeagleMove(Space s){
+        Iterator it = gs.possibleMoves.iterator();
+        while(it.hasNext()){
+            if(s==it.next()){
+                Log.d("info", "Legal Move");
+                return true;
+            }
+        }
+        Log.d("info", "Illegal Move");
+        return false;
     }
 
     public void showMoves(){
@@ -114,9 +123,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             while (it.hasNext()){
                 Point p = (Point) it.next();
                 try{
-                    //this current setup shows moves relative to player 2 probably use minus to show relative to player 1
-                    board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
-                    gs.possibleMoves.add(board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y]);
+                    //this current setup shows moves relative to player 2 probably use minus to show relative to player 1.
+                    if(gs.activePlayer.color==Color.RED){
+                        board.spaces[board.prevSpace.x-p.y][board.prevSpace.y-p.x].setBackgroundColor(Color.RED);
+                        gs.possibleMoves.add(board.spaces[board.prevSpace.x-p.y][board.prevSpace.y-p.x]);
+                    }
+                    else{
+                        board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
+                        gs.possibleMoves.add(board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y]);
+                    }
+
                 }
                 catch (Throwable t){}
 

@@ -60,20 +60,20 @@ public class Util {
     {
         CARDS = new LinkedHashMap<>();
         CARDS.put("Tiger", Arrays.asList(new Point(0,-1),new Point(0,2)));
-        CARDS.put("Dragon", Arrays.asList(new Point(-2,1),new Point(-1,-1), new Point(1,-1), new Point(2,1)));
-        CARDS.put("Frog", Arrays.asList(new Point(-2,0),new Point(-1,1), new Point(1,-1)));
-        CARDS.put("Rabbit", Arrays.asList(new Point(-1,-1),new Point(1,1), new Point(2,0)));
-        CARDS.put("Crab", Arrays.asList(new Point(-2,0),new Point(0,1), new Point(2,0)));
-        CARDS.put("Elephant", Arrays.asList(new Point(-1,0),new Point(-1,1), new Point(1,0), new Point(1,1)));
-        CARDS.put("Goose", Arrays.asList(new Point(-1,0),new Point(-1,1), new Point(1,0), new Point(1,-1)));
-        CARDS.put("Rooster", Arrays.asList(new Point(-1,0),new Point(-1,-1), new Point(1,0), new Point(1,1)));
-        CARDS.put("Monkey", Arrays.asList(new Point(-1,1),new Point(-1,1), new Point(1,1), new Point(1,-1)));
-        CARDS.put("Mantis", Arrays.asList(new Point(-1,1),new Point(0,-1), new Point(1,1)));
-        CARDS.put("Horse", Arrays.asList(new Point(-1,0),new Point(0,1), new Point(0,-1)));
-        CARDS.put("Ox", Arrays.asList(new Point(0,1),new Point(1,0), new Point(0,-1)));
-        CARDS.put("Crane", Arrays.asList(new Point(-1,-1),new Point(0,1), new Point(1,-1)));
-        CARDS.put("Boar", Arrays.asList(new Point(-1,0),new Point(0,1), new Point(1,0)));
-        CARDS.put("Eel", Arrays.asList(new Point(-1,1),new Point(-1,-1), new Point(1,0)));
-        CARDS.put("Cobra",Arrays.asList(new Point(-1,0),new Point(1,1), new Point(1,-1)));
+        CARDS.put("Dragon", Arrays.asList(new Point(2,1),new Point(1,-1), new Point(-1,-1), new Point(-2,1)));
+        CARDS.put("Frog", Arrays.asList(new Point(2,0),new Point(1,1), new Point(-1,-1)));
+        CARDS.put("Rabbit", Arrays.asList(new Point(1,-1),new Point(-1,1), new Point(-2,0)));
+        CARDS.put("Crab", Arrays.asList(new Point(2,0),new Point(0,1), new Point(-2,0)));
+        CARDS.put("Elephant", Arrays.asList(new Point(1,0),new Point(1,1), new Point(-1,0), new Point(-1,1)));
+        CARDS.put("Goose", Arrays.asList(new Point(1,0),new Point(1,1), new Point(-1,0), new Point(-1,-1)));
+        CARDS.put("Rooster", Arrays.asList(new Point(1,0),new Point(1,-1), new Point(-1,0), new Point(-1,1)));
+        CARDS.put("Monkey", Arrays.asList(new Point(1,1),new Point(1,1), new Point(-1,1), new Point(-1,-1)));
+        CARDS.put("Mantis", Arrays.asList(new Point(1,1),new Point(0,-1), new Point(-1,1)));
+        CARDS.put("Horse", Arrays.asList(new Point(1,0),new Point(0,1), new Point(0,-1)));
+        CARDS.put("Ox", Arrays.asList(new Point(0,1),new Point(-1,0), new Point(0,-1)));
+        CARDS.put("Crane", Arrays.asList(new Point(1,-1),new Point(0,1), new Point(-1,-1)));
+        CARDS.put("Boar", Arrays.asList(new Point(1,0),new Point(0,1), new Point(-1,0)));
+        CARDS.put("Eel", Arrays.asList(new Point(1,1),new Point(1,-1), new Point(-1,0)));
+        CARDS.put("Cobra",Arrays.asList(new Point(1,0),new Point(-1,1), new Point(-1,-1)));
     }
 }

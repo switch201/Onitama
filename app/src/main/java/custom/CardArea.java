@@ -56,9 +56,29 @@ public class CardArea extends LinearLayout {
             cardSpots.get(x).setMoveableSpots(moveableSpaces);
             cardSpots.get(x).setName(cardName);
             cardSpots.get(x).setOnClickListener(m);
+            if(x<2){
+                cardSpots.get(x).setColor(Color.RED);
+            }
+            if(x==2){
+                cardSpots.get(x).setColor(Color.GRAY);
+            }else{
+                cardSpots.get(x).setColor(Color.BLUE);
+            }
             cardNames.remove(draw);
         }
     }
+//
+//    public void swapCards(Card c){
+//        List tempSpots = c.moveableSpots;
+//        String tempName = c.name;
+//        c.setName(cardSpots.get(2).name);
+//        c.setMoveableSpots(cardSpots.get(2).moveableSpots);
+//        c.setColor(Color.GRAY);
+//        cardSpots.get(2).setMoveableSpots(tempSpots);
+//        cardSpots.get(2).setName(tempName);
+//
+//
+//    }
 
     public void highlightCard(Card c, boolean highlight){
         c.setActivated(highlight);
