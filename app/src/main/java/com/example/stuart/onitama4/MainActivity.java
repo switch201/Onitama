@@ -8,6 +8,7 @@ import android.view.View;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import custom.Board;
 import custom.Card;
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean moveOrCapture(Space s, Card c) {
-        if (cardArea.hasSelectedCard()&&isLeagleMove(s)) {
+        if (isLeagleMove(s)) {
             if (s.hasPiece()) {
                 return board.capture(s);
             } else {
@@ -78,10 +79,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     board.highlightSpace(s, true);
                 }
                 else{
-                    if((board.hasPrevSpace())&&gs.isPlayersTurn(board)&&moveOrCapture(s, cardArea.selectedCard)){
+                    if((board.hasPrevSpace())&&gs.isPlayersTurn(board)&&cardArea.hasSelectedCard()&& isCurrentPlayersCard(cardArea.selectedCard)&&moveOrCapture(s, cardArea.selectedCard)){
                         Log.d("noises", "Happy Chime");
                         gs.switchPlayers();
-//                        CardArea.rotateCards();
+                        cardArea.swapCards(cardArea.selectedCard);
                     }
                     else{
                         Log.d("noises", "Sad Chime");
@@ -148,5 +149,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gs.possibleMoves.clear();
             }
         }
+    }
+
+    public boolean isCurrentPlayersCard(Card c){
+        List<Card> theCards = new ArrayList<>();
+        if(gs.activePlayer.color==Color.RED){
+            theCards = cardArea.getPlayer1Cards();
+        }
+        else{
+            theCards = cardArea.getPlayer2Cards();
+        }
+        return theCards.contains(c);
     }
 }

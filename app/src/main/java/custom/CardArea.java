@@ -14,6 +14,7 @@ import com.example.stuart.onitama4.MainActivity;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
@@ -67,18 +68,29 @@ public class CardArea extends LinearLayout {
             cardNames.remove(draw);
         }
     }
-//
-//    public void swapCards(Card c){
-//        List tempSpots = c.moveableSpots;
-//        String tempName = c.name;
-//        c.setName(cardSpots.get(2).name);
-//        c.setMoveableSpots(cardSpots.get(2).moveableSpots);
-//        c.setColor(Color.GRAY);
-//        cardSpots.get(2).setMoveableSpots(tempSpots);
-//        cardSpots.get(2).setName(tempName);
-//
-//
-//    }
+
+    public void swapCards(Card c){
+        List tempSpots = c.moveableSpots;
+        String tempName = c.name;
+        c.setName(getMiddleCard().name);
+        c.setMoveableSpots(getMiddleCard().moveableSpots);
+        c.setColor(Color.GRAY);
+        getMiddleCard().setMoveableSpots(tempSpots);
+        getMiddleCard().setName(tempName);
+        highlightCard(c, false);
+        highlightCard(getMiddleCard(), false);
+    }
+    public List<Card> getPlayer1Cards(){
+        return cardSpots.subList(3,4);
+    }
+
+    public List<Card> getPlayer2Cards(){
+        return cardSpots.subList(0,1);
+    }
+
+    public Card getMiddleCard(){
+        return cardSpots.get(2);
+    }
 
     public void highlightCard(Card c, boolean highlight){
         c.setActivated(highlight);
