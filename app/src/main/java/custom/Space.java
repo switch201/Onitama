@@ -13,6 +13,7 @@ import android.view.View;
 public class Space extends android.support.v7.widget.AppCompatTextView {
 
     public Piece piece = null;
+    public int kingSpace;
     public int x;
     public int y;
 

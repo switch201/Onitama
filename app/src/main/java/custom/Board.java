@@ -77,6 +77,12 @@ public class Board extends LinearLayout {
                 if(x==0||x==4){
                     if(y==2){
                         space.setPiece(new Piece("M", x==0 ? Color.BLUE:Color.RED));
+                        if(x==0){
+                            space.kingSpace = Color.BLUE;
+                        }
+                        else{
+                            space.kingSpace = Color.RED;
+                        }
                     }
                     else{
                         space.setPiece(new Piece("m", x==0 ? Color.BLUE:Color.RED));

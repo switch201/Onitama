@@ -81,11 +81,11 @@ public class CardArea extends LinearLayout {
         highlightCard(getMiddleCard(), false);
     }
     public List<Card> getPlayer1Cards(){
-        return cardSpots.subList(3,4);
+        return cardSpots.subList(3,5);
     }
 
     public List<Card> getPlayer2Cards(){
-        return cardSpots.subList(0,1);
+        return cardSpots.subList(0,2);
     }
 
     public Card getMiddleCard(){
