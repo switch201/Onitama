@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public boolean moveOrCapture(Space s, Card c) {
-        if (isLeagleMove(s)) {
+        if (isLegalMove(s)) {
             if (s.hasPiece()) {
                 return board.capture(s);
             } else {
@@ -73,16 +73,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Space s = (Space) v;
             if(s.isActivated()){
                 board.highlightSpace(s, false);
+                Log.d("gameInfo", "Space ("+s.x+","+s.y+") has been deactivated");
             }
             else{
                 if(!board.hasPrevSpace()&&s.hasPiece()){
                     board.highlightSpace(s, true);
+                    Log.d("gameInfo", "Space ("+s.x+","+s.y+") has been activated");
                 }
                 else{
                     if((board.hasPrevSpace())&&gs.isPlayersTurn(board)&&cardArea.hasSelectedCard()&& isCurrentPlayersCard(cardArea.selectedCard)&&moveOrCapture(s, cardArea.selectedCard)){
                         Log.d("noises", "Happy Chime");
+                        Log.d("gameInfo", gs.activePlayer.name+" has moved a piece from ("+board.prevSpace.x+","+board.prevSpace.y+") to ("+s.x+","+s.y+") using card: "+cardArea.selectedCard.name);
                         gs.switchPlayers();
                         cardArea.swapCards(cardArea.selectedCard);
+                        board.prevSpace=null;
                     }
                     else{
                         Log.d("noises", "Sad Chime");
@@ -96,25 +100,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Card c = (Card) v;
             if (c.isActivated()){
                 cardArea.highlightCard(c, false);
+                Log.d("gameInfo", c.name+" card has been deactivated");
             }
             else{
                 if(!cardArea.hasSelectedCard()){
                     cardArea.highlightCard(c, true);
+                    Log.d("gameInfo", c.name+" card has been activated");
                 }
             }
         }
         showMoves();
     }
 
-    public boolean isLeagleMove(Space s){
+    public boolean isLegalMove(Space s){
         Iterator it = gs.possibleMoves.iterator();
         while(it.hasNext()){
             if(s==it.next()){
-                Log.d("info", "Legal Move");
+                Log.d("gameInfo", gs.activePlayer.name+" Attempted a Legal Move");
                 return true;
             }
         }
-        Log.d("info", "Illegal Move");
+        Log.d("gameInfo", gs.activePlayer.name+" Attempted an Illegal Move");
         return false;
     }
 

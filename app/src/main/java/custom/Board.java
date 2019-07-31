@@ -59,7 +59,6 @@ public class Board extends LinearLayout {
         prevSpace.removePiece();
         prevSpace.setBackgroundColor(Color.GRAY);
         prevSpace.setActivated(false);
-        prevSpace=null;
         return true;
     }
 
