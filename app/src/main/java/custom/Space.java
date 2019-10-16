@@ -61,7 +61,7 @@ public class Space extends android.support.v7.widget.AppCompatImageButton {
 
     public void removePiece(){
         this.piece = null;
-        this.setImageResource(0);
+      this.setImageDrawable(getResources().getDrawable(R.drawable.empty_space));
         this.getBackground().clearColorFilter();
     }
 

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     CardArea cardArea;
     GameState gs;
 
+    //App Starts here for now
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cardArea.setCardSpots(cardSpots, this);
     }
 
+    //Initializes the spaces by tying them to the XML via their IDs
     public void getSpaces(){
         int add=0;
         for(int x=0;x<5;x++) {
@@ -50,6 +52,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //call this when attempting to move a piece to a new space, will return false if the move is illegal.
+    //If the space contains a piece then capture is called instead of move.
     public boolean moveOrCapture(Space s, Card c) {
         if (isLegalMove(s)) {
             if (s.hasPiece()) {

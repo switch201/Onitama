@@ -93,6 +93,9 @@ public class Board extends LinearLayout {
                         space.setPiece(new Piece("pawn", x==0 ? "white":"black"));
                     }
                 }
+                else{
+                    space.removePiece();
+                }
                 space.setOnClickListener(m);
             }
         }
