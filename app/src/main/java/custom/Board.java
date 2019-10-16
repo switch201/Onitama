@@ -2,6 +2,7 @@ package custom;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -40,7 +41,12 @@ public class Board extends LinearLayout {
     public void highlightSpace(Space s, boolean highlight){
         s.setActivated(highlight);
         prevSpace = highlight?s:null;
-        s.setBackgroundColor(highlight?Color.YELLOW:Color.GRAY);
+        if(highlight){
+            s.getBackground().setColorFilter(Util.SPACE_BACKGROUND_HIGHLIGHT, PorterDuff.Mode.MULTIPLY);
+        }
+        else{
+            s.getBackground().clearColorFilter();
+        }
     }
 
     public boolean hasPrevSpace(){
@@ -57,7 +63,7 @@ public class Board extends LinearLayout {
     public boolean move(Space to){
         to.setPiece(prevSpace.piece);
         prevSpace.removePiece();
-        prevSpace.setBackgroundColor(Color.GRAY);
+        prevSpace.getBackground().clearColorFilter();
         prevSpace.setActivated(false);
         return true;
     }
@@ -75,7 +81,7 @@ public class Board extends LinearLayout {
                 spaces[x][y].y=y;
                 if(x==0||x==4){
                     if(y==2){
-                        space.setPiece(new Piece("M", x==0 ? Color.BLUE:Color.RED));
+                        space.setPiece(new Piece("king", x==0 ? "white":"black"));
                         if(x==0){
                             space.kingSpace = Color.BLUE;
                         }
@@ -84,9 +90,11 @@ public class Board extends LinearLayout {
                         }
                     }
                     else{
-                        space.setPiece(new Piece("m", x==0 ? Color.BLUE:Color.RED));
+                        space.setPiece(new Piece("pawn", x==0 ? "white":"black"));
                     }
-
+                }
+                else{
+                    space.removePiece();
                 }
                 space.setOnClickListener(m);
             }

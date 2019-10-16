@@ -1,5 +1,6 @@
 package custom;
 
+import android.graphics.Color;
 import android.graphics.Point;
 
 import com.example.stuart.onitama4.R;
@@ -52,6 +53,10 @@ public class Util {
             R.id.bottom1,
             R.id.bottom2
     };
+
+    public static final int SPACE_BACKGROUND_DEFAULT = 0;
+    public static final int SPACE_BACKGROUND_HIGHLIGHT= Color.YELLOW;
+    public static final int SPACE_BACKGROUND_TARGET = Color.RED;
 
 
 

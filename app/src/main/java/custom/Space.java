@@ -5,12 +5,15 @@ import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
+
+import com.example.stuart.onitama4.R;
 
 /**
  * Created by Stuart on 3/16/2017.
  */
 
-public class Space extends android.support.v7.widget.AppCompatTextView {
+public class Space extends android.support.v7.widget.AppCompatImageButton {
 
     public Piece piece = null;
     public int kingSpace;
@@ -19,23 +22,14 @@ public class Space extends android.support.v7.widget.AppCompatTextView {
 
     public Space(Context context) {
         super(context);
-        this.setBackgroundColor(Color.GRAY);
-        this.setTextColor(Color.GRAY);
-        this.setText("M");
     }
 
     public Space(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setBackgroundColor(Color.GRAY);
-        this.setTextColor(Color.GRAY);
-        this.setText("M");
     }
 
     public Space(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.setBackgroundColor(Color.GRAY);
-        this.setTextColor(Color.GRAY);
-        this.setText("M");
     }
 
     // This is used to make square buttons.
@@ -47,14 +41,28 @@ public class Space extends android.support.v7.widget.AppCompatTextView {
 
     public void setPiece(Piece p){
         this.piece = p;
-        this.setText(p.rank);
-        this.setTextColor(p.color);
+        if(p.color == "white"){
+            if(p.rank == "king"){
+                this.setImageDrawable(getResources().getDrawable(R.drawable.white_king));
+            }
+            else{
+                this.setImageDrawable(getResources().getDrawable(R.drawable.white_pawn));
+            }
+        }
+        else if(p.color == "black"){
+            if(p.rank == "king"){
+                this.setImageDrawable(getResources().getDrawable(R.drawable.black_king));
+            }
+            else{
+                this.setImageDrawable(getResources().getDrawable(R.drawable.black_pawn));
+            }
+        }
     }
 
     public void removePiece(){
         this.piece = null;
-        this.setText("M");
-        this.setTextColor(Color.GRAY);
+      this.setImageDrawable(getResources().getDrawable(R.drawable.empty_space));
+        this.getBackground().clearColorFilter();
     }
 
 
