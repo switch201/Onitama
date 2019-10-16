@@ -1,6 +1,7 @@
 package com.example.stuart.onitama4;
 import android.graphics.Color;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -131,12 +132,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Point p = (Point) it.next();
                 try{
                     //this current setup shows moves relative to player 2 probably use minus to show relative to player 1.
-                    if(gs.activePlayer.color==Color.RED){
-                        board.spaces[board.prevSpace.x-p.y][board.prevSpace.y-p.x].setBackgroundColor(Color.RED);
+                    if(gs.activePlayer.color=="black"){
+                        board.spaces[board.prevSpace.x-p.y][board.prevSpace.y-p.x].getBackground().setColorFilter(Util.SPACE_BACKGROUND_TARGET, PorterDuff.Mode.MULTIPLY);
                         gs.possibleMoves.add(board.spaces[board.prevSpace.x-p.y][board.prevSpace.y-p.x]);
                     }
                     else{
-                        board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y].setBackgroundColor(Color.RED);
+                        board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y].getBackground().setColorFilter(Util.SPACE_BACKGROUND_TARGET, PorterDuff.Mode.MULTIPLY);;
                         gs.possibleMoves.add(board.spaces[p.y+board.prevSpace.x][p.x+board.prevSpace.y]);
                     }
 
@@ -150,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(!gs.possibleMoves.isEmpty()){
                 Iterator<Space> it = gs.possibleMoves.iterator();
                 while (it.hasNext()){
-                    it.next().setBackgroundColor(Color.GRAY);
+                    it.next().getBackground().clearColorFilter();
                 }
                 gs.possibleMoves.clear();
             }
@@ -159,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean isCurrentPlayersCard(Card c){
         List<Card> theCards = new ArrayList<>();
-        if(gs.activePlayer.color==Color.RED){
+        if(gs.activePlayer.color=="black"){
             theCards = cardArea.getPlayer1Cards();
         }
         else{

@@ -6,9 +6,9 @@ package custom;
 
 public class Player {
     public String name;
-    public int color;
+    public String color;
 
-    public Player(String name, int color){
+    public Player(String name, String color){
         this.name = name;
         this.color = color;
     }

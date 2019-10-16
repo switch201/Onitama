@@ -18,8 +18,8 @@ public class GameState {
 
     public GameState(){
         possibleMoves = new ArrayList();
-        player1 = new Player("Player 1", Color.RED);
-        player2 = new Player("Player 2", Color.BLUE);
+        player1 = new Player("Player 1", "black");
+        player2 = new Player("Player 2", "white");
         activePlayer = player1;
     }
 
