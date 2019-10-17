@@ -2,6 +2,7 @@ package custom;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -53,9 +54,10 @@ public class CardArea extends LinearLayout {
         for(int x = 0;x<cardSpots.size();x++){
             int draw = new Random().nextInt(cardNames.size());
             String cardName = cardNames.get(draw);
-            List moveableSpaces = Util.CARDS.get(cardName);
-            cardSpots.get(x).setMoveableSpots(moveableSpaces);
+            List movableSpaces = Util.CARDS.get(cardName).get("movableSpaces");
+            cardSpots.get(x).setMoveableSpots(movableSpaces);
             cardSpots.get(x).setName(cardName);
+            cardSpots.get(x).setSrc(Util.CARDS.get(cardName).get("src").get(0));
             cardSpots.get(x).setOnClickListener(m);
             if(x<2){
                 cardSpots.get(x).setColor(Color.RED);
@@ -72,11 +74,13 @@ public class CardArea extends LinearLayout {
     public void swapCards(Card c){
         List tempSpots = c.moveableSpots;
         String tempName = c.name;
+        int tempSrc = c.src;
         c.setName(getMiddleCard().name);
         c.setMoveableSpots(getMiddleCard().moveableSpots);
-        c.setColor(Color.GRAY);
+        c.setSrc(getMiddleCard().src);
         getMiddleCard().setMoveableSpots(tempSpots);
         getMiddleCard().setName(tempName);
+        getMiddleCard().setSrc(tempSrc);
         highlightCard(c, false);
         highlightCard(getMiddleCard(), false);
     }
@@ -94,7 +98,12 @@ public class CardArea extends LinearLayout {
 
     public void highlightCard(Card c, boolean highlight){
         c.setActivated(highlight);
-        c.setBackgroundColor(highlight? Color.YELLOW:Color.GRAY);
+        if(highlight){
+            c.getBackground().setColorFilter(Util.SPACE_BACKGROUND_HIGHLIGHT, PorterDuff.Mode.MULTIPLY);
+        }
+        else{
+            c.getBackground().clearColorFilter();
+        }
         selectedCard = highlight?c:null;
     }
 
