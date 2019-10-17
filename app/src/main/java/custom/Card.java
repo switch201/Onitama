@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
+import com.example.stuart.onitama4.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,32 +15,32 @@ import java.util.List;
  * Created by Stuart on 4/11/2017.
  */
 
-public class Card extends android.support.v7.widget.AppCompatTextView {
+public class Card extends android.support.v7.widget.AppCompatImageButton {
 
     public String name;
+    public int src;
     public List moveableSpots;
     public int color;
 
     public Card(Context context) {
         super(context);
-        this.setTextColor(Color.GREEN);
     }
 
     public Card(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        this.setTextColor(Color.GREEN);
     }
 
     public Card(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.setTextColor(Color.GREEN);
     }
 
     public void setName(String name) {
         this.name = name;
-        this.setText(name);
-        this.setTextColor(Color.GREEN);
-        this.setBackgroundColor(Color.GRAY);
+    }
+
+    public void setSrc(Integer id){
+        this.src = id;
+        this.setImageDrawable(getResources().getDrawable(this.src));
     }
 
     public void setMoveableSpots(List moveableSpots) {
